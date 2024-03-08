@@ -1,0 +1,11 @@
+{
+    "name": "ProfilePage",
+    "alias": "profilepage",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\ProfilePage\\App\\Providers\\ProfilePageServiceProvider"
+    ],
+    "files": []
+}

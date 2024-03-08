@@ -1,0 +1,7 @@
+{
+    "name": "MainPage",
+    "description": "",
+    "providers": [
+        "Modules\\MainPage\\App\\Providers\\MainPageServiceProvider"
+    ]
+}
