@@ -14,7 +14,6 @@ let ProfileModel = Backbone.Model.extend({
             email: $('#email').val(),
             password: $('#password').val(),
             role: null,
-            get_letter_release: $('#mailing').is(":checked"),
             avatar_name: $('#avatar-name').text(),
             avatar: ''
         });
@@ -35,7 +34,7 @@ let HandleFileChangeView = Backbone.View.extend({
 
     handleFileChange: function() {
         let fileInput = this.el;
-        let file      = fileInput.files[0];
+        let file = fileInput.files[0];
 
         if (file instanceof Blob) {
             let reader = new FileReader();
@@ -93,7 +92,8 @@ let InputChangeView = Backbone.View.extend({
         'change': 'handleInputChange'
     },
 
-    initialize: function() {
+    initialize: function(options) {
+        this.model = options.model;
         this.listenTo(this.model, 'change', this.render);
     },
 

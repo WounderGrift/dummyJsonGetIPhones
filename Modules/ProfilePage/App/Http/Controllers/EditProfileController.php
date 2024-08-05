@@ -5,8 +5,6 @@ namespace Modules\ProfilePage\App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Http\Helpers\FileHelper;
 use App\Http\Helpers\ImageHelper;
-use App\Http\Helpers\MailHelper;
-use App\Http\Helpers\TelegramLogHelper;
 use App\Models\Users;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -35,7 +33,7 @@ class EditProfileController extends Controller implements EditProfilePageInterfa
             return redirect()->route('profile.index.cid', ['cid' => $profile->cid]);
 
         $mimeTypeImage = implode(', ', FileHelper::ACCESS_IMAGE_MIME_TYPE);
-        return view('profilepage::edit', compact('title', 'inProfilePage',
+        return view('profilePage::edit', compact('title', 'inProfilePage',
             'profile', 'mimeTypeImage'));
     }
 
@@ -54,7 +52,6 @@ class EditProfileController extends Controller implements EditProfilePageInterfa
             'avatar_name' => ['string', 'nullable', 'max:255'],
             'status' => ['string', 'nullable', 'max:255'],
             'about_me' => ['string', 'nullable', 'max:255'],
-            'get_letter_release'  => ['boolean', 'nullable'],
         ]));
 
         $data['status']   = $data['status']   ?? null;
@@ -106,21 +103,12 @@ class EditProfileController extends Controller implements EditProfilePageInterfa
         if (isset($data['email']))
             $data['is_verify'] = false;
 
-        $isCheck = $userNew->update($data);
+        $userNew->update($data);
         if (isset($data['email']))
         {
-            $name  = $userNew->name;
-            $email = $userNew->email;
-
-            $token = $request->session()->getId();
-            $template = view('mail.verify', compact('name', 'token'))->render();
-            MailHelper::compose($template, $email, 'Confirm Email');
+            $request->session()->getId();
         }
 
-        if (isset($data['get_letter_release']))
-            TelegramLogHelper::reportToggleSubscribeToPublicGame($userNew, $data['get_letter_release']);
-
-        TelegramLogHelper::reportChangeUser($request->user(), $userOld, $userNew, !$isCheck);
         return response()->json(['redirect_url' => route('profile.index.cid', ['cid' => $userNew->cid])]);
     }
 }

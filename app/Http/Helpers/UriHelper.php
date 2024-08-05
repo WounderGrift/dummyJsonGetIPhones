@@ -76,9 +76,9 @@ class UriHelper
 
     public static function yearForMenu(): string
     {
-        $yearsInBd = YearReleases::orderBy('year', 'DESC')->pluck('year')->toArray();
+        $yearsInBd = YearReleases::query()->orderBy('year', 'DESC')->pluck('year')->toArray();
         foreach ($yearsInBd as $year) {
-            $gamesCount = Game::whereRaw("YEAR(STR_TO_DATE(date_release, '%d %M %Y')) = ?", [$year])
+            $gamesCount = Game::query()->whereRaw("YEAR(STR_TO_DATE(date_release, '%d %M %Y')) = ?", [$year])
                 ->where('is_soft', 0)
                 ->where('is_waiting', 0)
                 ->where('status', Game::STATUS_PUBLISHED)
@@ -92,7 +92,8 @@ class UriHelper
         return date('Y');
     }
 
-    public static function getSourceInUrlInOwnerPanel() {
+    public static function getSourceInUrlInOwnerPanel(): string
+    {
         $currentUrl = url()->current();
         $parsedUrl  = parse_url($currentUrl);
         $parsedUrl  = explode("/", $parsedUrl["path"]);

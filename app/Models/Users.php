@@ -36,7 +36,6 @@ class Users extends Authenticatable
         'about_me',
         'timezone',
         'is_verify',
-        'get_letter_release',
         'last_activity',
         'is_banned',
     ];
@@ -95,53 +94,5 @@ class Users extends Authenticatable
         } else {
             $this->attributes['cid'] = $value;
         }
-    }
-
-    public function oneTimeToken()
-    {
-        return $this->belongsTo(OneTimeToken::class, 'id', 'user_id');
-    }
-
-    public function wishlist()
-    {
-        return $this->belongsToMany(Game::class, 'wishlist', 'user_id', 'game_id');
-    }
-
-    public function likes()
-    {
-        return $this->hasMany(Likes::class, 'user_id', 'id');
-    }
-
-    public function likesToComments()
-    {
-        return $this->hasMany(Likes::class, 'user_id', 'id')
-            ->where('comment_id', '!=',null);
-    }
-
-    public function likesToGames()
-    {
-        return $this->hasMany(Likes::class, 'user_id', 'id')
-            ->where('comment_id',null);
-    }
-
-    public function comments()
-    {
-        return $this->hasMany(Comments::class, 'from_id', 'id');
-    }
-
-    public function newsletters()
-    {
-        return $this->belongsToMany(Game::class, 'newsletter_for_updates', 'user_id', 'game_id')
-            ->withTrashed();
-    }
-
-    public function downloadStatistic()
-    {
-        return $this->hasMany(DownloadStatistics::class, 'user_id', 'id');
-    }
-
-    public function bannerStatistic()
-    {
-        return $this->hasMany(BannerStatistics::class, 'user_id', 'id');
     }
 }

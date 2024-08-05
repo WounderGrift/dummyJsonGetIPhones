@@ -29,7 +29,6 @@ return new class extends Migration
             $table->text('about_me')->nullable();
             $table->boolean('is_verify')->default(false);
             $table->string('timezone')->nullable();
-            $table->boolean('get_letter_release')->default(false);
             $table->boolean('is_banned')->default(false);
             $table->rememberToken();
             $table->integer('last_activity')->index()->default(now()->timestamp);

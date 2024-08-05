@@ -188,7 +188,6 @@ let RegistrationQuery = Backbone.View.extend({
             email: $('#registration-email').val(),
             password: $('#registration-password').val(),
             remember: $('#registration-remember').is(":checked"),
-            get_letter_release: $('#mailing').is(":checked"),
             timezone: Intl.DateTimeFormat().resolvedOptions().timeZone
         });
 
@@ -362,12 +361,17 @@ let WishlistActionView = Backbone.View.extend({
     toggleWishlist: function(event) {
         let wishlist = $(event.currentTarget);
         let toggleWishlist = wishlist.is(":checked");
-        let game_id = wishlist.data('game-id');
-        let count = $('.wishlist.favorite-count');
+        let game_id = $('main .container').data('game-id') ?? wishlist.data('game-id');
+        let count   = $('.wishlist.favorite-count');
 
         let existingItem = this.wishQueue.findWhere({ game_id: game_id });
         if (existingItem) {
-            return;
+            existingItem.set('toggleWishlist', toggleWishlist);
+        } else {
+            this.wishQueue.add({
+                toggleWishlist: toggleWishlist,
+                game_id: game_id
+            });
         }
 
         if (count.length > 0) {
@@ -379,20 +383,21 @@ let WishlistActionView = Backbone.View.extend({
                     count.text(currentValue);
 
                     let subscribeBtn = $('.user-subscribe');
-                    subscribeBtn.removeClass('user-subscribe');
-                    subscribeBtn.addClass('user-unsubscribe');
-                    subscribeBtn.text('Отписаться от новостей');
+                    if (subscribeBtn.text().trim() === 'Подписаться на обновления') {
+                        subscribeBtn.removeClass('user-subscribe');
+                        subscribeBtn.addClass('user-unsubscribe');
+                        subscribeBtn.text('Отписаться от новостей');
+
+                        let newsletterCount = $('.newsletter_count');
+                        let currentValue = parseInt(newsletterCount.text()) + 1;
+                        newsletterCount.text(currentValue++);
+                    }
                 } else {
                     currentValue--;
                     count.text(currentValue);
                 }
             }
         }
-
-        this.wishQueue.add({
-            toggleWishlist: toggleWishlist,
-            game_id: game_id
-        });
 
         clearTimeout(this.debounceWishlistTimeout);
         this.debounceWishlistTimeout = setTimeout(() => {

@@ -873,6 +873,24 @@ body {
     border-radius: 4px;
 }
 
+.is-loading .image, .is-loading span, .is-loading p {
+    background: #eee;
+    background: linear-gradient(110deg, #ececec 8%, #f5f5f5 18%, #ececec 33%);
+    border-radius: 5px;
+    background-size: 200% 100%;
+    animation: 1.5s shine linear infinite;
+}
+.is-loading span {
+    display: block;
+    width: 120px;
+}
+
+@keyframes shine {
+    to {
+        background-position-x: -200%;
+    }
+}
+
 .remove-file-force, .restore-file {
     color: black;
 }
@@ -2953,7 +2971,7 @@ a.list-group-item:hover {
     margin: 1em 0px 1em 4em;
 }
 
-.response {
+.comment-section {
     margin-top: 40px;
 }
 
@@ -5201,7 +5219,7 @@ form.search-mobile::after {
         padding: 1em 0 0;
     }
 
-    .response {
+    .comment-section {
         margin-top: 0px;
     }
 

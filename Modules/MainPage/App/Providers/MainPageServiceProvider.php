@@ -2,6 +2,7 @@
 
 namespace Modules\MainPage\App\Providers;
 
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
 class MainPageServiceProvider extends ServiceProvider
@@ -79,8 +80,9 @@ class MainPageServiceProvider extends ServiceProvider
      */
     public function registerViews(): void
     {
-        $this->loadViewsFrom(base_path('Modules/'.$this->moduleName.'/resources/views'), 'mainpage');
+        $this->loadViewsFrom(base_path('Modules/'.$this->moduleName.'/resources/views'), 'mainPage');
         $this->loadViewsFrom(resource_path('views'), 'main');
+        Blade::component('components.skeleton-loader', 'skeleton-loader');
     }
 
     /**

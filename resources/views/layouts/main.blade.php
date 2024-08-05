@@ -1,57 +1,26 @@
 <!DOCTYPE html>
 <html lang="ru-RU" class="h-100">
 <head>
-    <title>{{ config('app.app_name') }} - Скачать игры через торрент бесплатно на компьютер</title>
+    <title>Лаборатория интернет - тест</title>
     <link href="{{asset('css/bootstrap.css')}}" rel='stylesheet' type='text/css'/>
     <link href="{{asset('css/style.css')}}" rel='stylesheet' type='text/css'/>
     <link href="{{asset('css/itc-slider.css')}}" rel="stylesheet">
 
-    <!-- Yandex.Metrika counter -->
-    <script type="text/javascript" >
-        (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-            m[i].l=1*new Date();
-            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-
-        ym(96079564, "init", {
-            clickmap:true,
-            trackLinks:true,
-            accurateTrackBounce:true,
-            webvisor:true,
-            ecommerce:"sed-md"
-        });
-    </script>
-    <noscript><div><img src="https://mc.yandex.ru/watch/96079564" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-    <!-- /Yandex.Metrika counter -->
-
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    @if (isset($games) && isset($categories))
-        <meta name="keywords" content="{{ App\Http\Helpers\MetaHelper::keywordsGrid($games, $categories) }}"/>
-    @elseif (isset($detail))
-        <meta name="keywords" content="{{ App\Http\Helpers\MetaHelper::keywordsDetail($game) }}"/>
-        <meta property="og:image" content="{{ Storage::url($game->detail->preview_detail) }}">
 
-        @php
-            $description = App\Http\Helpers\MetaHelper::descriptionDetail($detail);
-        @endphp
-    @else
-        <meta name="keywords" content="{{ App\Http\Helpers\MetaHelper::keywordsUsually() }}"/>
-    @endif
-
-    <meta name="title" content="{{ config('app.app_name') }} - Скачать игры через торрент бесплатно на компьютер">
-    <meta name="description" content="{{ $description ?? "Скачать торрентом игры на ПК, сайт ".config('app.app_name')." - СКАЧАТЬ ТОРРЕНТ" }}">
-    <link rel="alternate" type="application/rss+xml" title="{{ config('app.app_name') }} - Скачать игры через торрент бесплатно на компьютер" href="{{ asset('rss.xml') }}">
+    <meta name="title" content="Лаборатория интернет - тест">
+    <meta name="description" content="Лаборатория интернет - тест">
+    <link rel="alternate" type="application/rss+xml" title="Лаборатория интернет - тест" href="{{ asset('rss.xml') }}">
 
     <meta property="twitter:card" content="summary">
-    <meta property="twitter:title" content="{{ config('app.app_name') }} - Скачать игры через торрент бесплатно на компьютер">
-    <meta property="twitter:description" content="{{ $description ?? "Скачать торрентом игры на ПК, сайт".config('app.app_name')." - СКАЧАТЬ ТОРРЕНТ" }}">
+    <meta property="twitter:title" content="Лаборатория интернет - тест">
+    <meta property="twitter:description" content="Лаборатория интернет - тест">
 
     <meta property="og:type" content="article">
-    <meta property="og:site_name" content="{{ config('app.app_name') }} - Скачать игры через торрент бесплатно на компьютер">
-    <meta property="og:title" content="{{ config('app.app_name') }} - Скачать игры через торрент бесплатно на компьютер">
-    <meta property="og:description" content="{{ $description ?? "Скачать торрентом игры на ПК, сайт ".config('app.app_name')." - СКАЧАТЬ ТОРРЕНТ" }}">
+    <meta property="og:site_name" content="Лаборатория интернет - тест">
+    <meta property="og:title" content="Лаборатория интернет - тест">
+    <meta property="og:description" content="Лаборатория интернет - тест">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -77,7 +46,7 @@
             <h2><u>Авторизация</u></h2>
             <h3 class="error"></h3>
             <form id="login-form" method="POST" onsubmit="return false;">
-                <input id="login-email" class="regist-login" type="email" name="email" placeholder="Ваше Мыло">
+                <input id="login-email" class="regist-login" type="email" name="email" placeholder="Ваш eMail">
                 <input id="login-password" class="regist-login" type="password" name="password"
                        placeholder="Ваш Пароль">
                 <label class="checkbox-container" for="login-remember">
@@ -89,7 +58,6 @@
             </form>
             <hr>
             <p>У вас нет аккаунта? <a class="register-link">Зарегистрируйтесь</a></p>
-            <p>Или вы забыли пароль? <a class="restore-link">Восстановить</a></p>
         </div>
         <div class="popup-content register disabled">
             <div class="loader"></div>
@@ -97,17 +65,12 @@
             <h3 class="error"></h3>
             <form id="registration-form" method="POST" onsubmit="return false;">
                 <input id="registration-name" class="regist-login" type="text" name="name" placeholder="Ваше Имя">
-                <input id="registration-email" class="regist-login" type="email" name="email" placeholder="Ваше Мыло">
+                <input id="registration-email" class="regist-login" type="email" name="email" placeholder="Ваш eMail">
                 <input id="registration-password" class="regist-login" type="password" name="password"
                        placeholder="Ваш Пароль">
                 <label class="checkbox-container" for="registration-remember">
                     Запомнить меня
                     <input type="checkbox" id="registration-remember">
-                    <span class="checkmark"></span>
-                </label>
-                <label class="checkbox-container" for="mailing">
-                    Хочу получать письма о новинках
-                    <input type="checkbox" id="mailing" value="1">
                     <span class="checkmark"></span>
                 </label>
                 <button type="submit">ЗАЙТИ</button>
@@ -132,28 +95,12 @@
     <div class="header">
         <div class="container">
             <div class="header-left">
-                @if (isset($isUnpublished))
-                    <div class="search">
-                        <form action="" method="GET">
-                            <input type="submit" value="">
-                            <input type="text" name="query" autocomplete="off" placeholder="Поиск неопубликованных по сайту...">
-                        </form>
-                    </div>
-                @elseif (isset($isSeries))
-                    <div class="search">
-                        <form action="" method="GET">
-                            <input type="submit" value="">
-                            <input type="text" name="query" autocomplete="off" placeholder="Поиск серий по сайту...">
-                        </form>
-                    </div>
-                @else
-                    <div class="search">
-                        <form action="" method="GET">
-                            <input type="submit" value="">
-                            <input type="text" name="query" autocomplete="off" placeholder="Поиск по сайту...">
-                        </form>
-                    </div>
-                @endif
+                <div class="search">
+                    <form action="" method="GET">
+                        <input type="submit" value="">
+                        <input type="text" name="query" autocomplete="off" placeholder="Поиска по сайту нет...">
+                    </form>
+                </div>
                 <div class="clearfix"></div>
             </div>
             <div class="headr-right">
@@ -164,7 +111,7 @@
                         </a>
                     @else
                         @if (Auth::user()->checkOwner())
-                            <a href="{{ route('owner.index', ['hideBroken' => 0, 'source' => 'null']) }}" class="btn btn-success">
+                            <a href="{{ route('profiles.chart.table') }}" class="btn btn-success">
                                 <i class="fas fa-user-shield"></i>
                             </a>
                         @elseif (Auth::user()->checkAdmin())
@@ -176,17 +123,6 @@
                         <a href="{{ route('profile.index.cid', ['cid' => Auth::user()->cid]) }}" class="btn btn-orange">
                             <i class="fas fa-user"></i>
                         </a>
-{{--                         TODO message--}}
-                        @if (Auth::user()->is_verify)
-                            @if (!Auth::user()->is_banned && false)
-                                <a class="btn btn-light">
-                                    <i class="fas fa-envelope"></i>
-                                </a>
-                            @endif
-                            <a href="{{ route('wishlist.index') }}" class="btn btn-info">
-                                <i class="fas fa-heart"></i>
-                            </a>
-                        @endif
 
                         <a href="{{ route('profile.logout') }}" class="btn btn-danger">
                             <i class="fas fa-sign-out-alt"></i>
@@ -211,26 +147,18 @@
             justify-content: space-between;
             margin-top: 10px;">
             <div class="logo">
-{{--                <h1><a href="{{ route('main.index') }}"> {{ strtoupper(config('app.app_name')) }}</a></h1>--}}
+                <h1><a href="{{ route('main.index') }}">ГЛАВНАЯ СТРАНИЦЫ</a></h1>
             </div>
             <div class="top-menu">
                 <span class="menu"></span>
                 <ul class="nav1">
-                    <li><a href="{{ route('all.index') }}">ВСЕ ИГРЫ</a></li>
-{{--                    <li><a href="{{ route('series.index') }}">СЕРИИ</a></li>--}}
-{{--                    <li><a href="{{ route('new.index') }}">НОВИНОЧКИ</a></li>--}}
-{{--                    <li><a href="{{ route('waiting.index') }}">ЖДЕМ</a></li>--}}
-{{--                    <li><a href="{{ route('russian.index') }}">НА РУССКОМ</a></li>--}}
-{{--                    <li><a href="{{ route('weak.index') }}">СЛАБЫЙ ПК</a></li>--}}
-{{--                    <li><a href="{{ route('repacks.index') }}">РЕПАКИ</a></li>--}}
-{{--                    @if (App\Models\YearReleases::count() > 0)--}}
-{{--                        <li>--}}
-{{--                            <a href="{{ route('year.index.category', ['category' => App\Helpers\UriHelper::yearForMenu()]) }}">ПО ГОДАМ</a>--}}
-{{--                        </li>--}}
-{{--                    @endif--}}
-{{--                    @if (App\Models\Game::where('is_soft', 1)->where('status', App\Models\Game::STATUS_PUBLISHED)->count() > 0)--}}
-{{--                        <li><a href="{{ route('soft.index') }}">СОФТ</a></li>--}}
-{{--                    @endif--}}
+                    <li><a href="#">ПУНКТ 1</a></li>
+                    <li><a href="#">ПУНКТ 2</a></li>
+                    <li><a href="#">ПУНКТ 3</a></li>
+                    <li><a href="#">ПУНКТ 4</a></li>
+                    <li><a href="#">ПУНКТ 5</a></li>
+                    <li><a href="#">ПУНКТ 6</a></li>
+                    <li><a href="#">ПУНКТ 7</a></li>
                 </ul>
             </div>
             <div class="clearfix"></div>
@@ -241,209 +169,32 @@
 <!-- Slider-starts-Here -->
 <script src="{{ asset('js/responsiveslides.min.js') }}"></script>
 
-@if ((isset($inProfilePage) || isset($inWishlistPage) || isset($inOwnerPanel) || isset($inPublishPage) || isset($inLittleBannerPage)) && Auth::check() && Auth::user()->is_verify)
-    @php
-        $littleBannerMenu  = \App\Http\Helpers\BannerHelper::getLittleBannerMenu();
-        $showDefaultBanner = true;
-    @endphp
-
-    @if ($littleBannerMenu->isNotEmpty())
-        @foreach($littleBannerMenu as $banner)
-            @if ($banner->active || isset($inLittleBannerPage))
-                @if ($banner->media_type == 'video')
-                    <a class="no-float banner-jump" data-code="{{ base64_encode($banner->id) }}">
-                        <video autoplay muted loop class="bigBannerMenu">
-                            <source src="{{ Storage::url($banner->banner_path) }}?timestamp={{ $banner->updated_at->timestamp }}" type="video/webm">
-                        </video>
-                    </a>
-                    @php $showDefaultBanner = false; @endphp
-                @elseif ($banner->media_type == 'image')
-                    <a class="bigBannerMenu banner-jump" data-code="{{ base64_encode($banner->id) }}">
-                        <img src="{{ Storage::url($banner->banner_path) }}?timestamp={{ $banner->updated_at->timestamp }}"
-                             alt="{{ $banner->banner_name }}">
-                    </a>
-                    @php $showDefaultBanner = false; @endphp
-                @endif
-            @endif
-        @endforeach
-    @endif
-
-    @if ($showDefaultBanner)
-        <div class="banner">
-            <div class="bnr2"
-                 style="background: url({{ Storage::url('banners/default/bnr3.jpg') }}) no-repeat 0 0; background-size: cover;">
-            </div>
-        </div>
-    @endif
-@else
-    @php
-        $bigBannerMenu = \App\Http\Helpers\BannerHelper::getBigBannerMenu($onlyActive = !isset($inBigBannerPage));
-        $showDefaultBanner = true;
-    @endphp
-
-    @if ($bigBannerMenu->isNotEmpty())
-        <div class="banner-slider">
-            <div class="swiper" data-interval="3000">
-                <div class="swiper-wrapper bigBannerMenu">
-                    @foreach ($bigBannerMenu as $index => $banner)
-                        <div class="swiper-slide">
-                            @if ($banner->media_type == 'image')
-                                <a data-code="{{ base64_encode($banner->id) }}" class="itc-slider-item banner-jump"
-                                   style="background: url({{ Storage::url($banner->banner_path) }}?timestamp={{ $banner->updated_at->timestamp }}) no-repeat 0 0; background-size: cover; cursor: {{ !empty($banner->href) ? 'pointer' : 'auto' }}; height: 350px !important;"></a>
-
-                                @php $showDefaultBanner = false; @endphp
-                            @elseif ($banner->media_type == 'video')
-                                <a data-code="{{ base64_encode($banner->id) }}" class="itc-slider-item banner-jump"
-                                   style="cursor: {{ !empty($banner->href) ? 'pointer' : 'auto' }}; height: 350px !important;">
-                                    <video autoplay muted loop style="object-fit: cover; width: 100%; height: 100%;">
-                                        <source src="{{ Storage::url($banner->banner_path) }}?timestamp={{ $banner->updated_at->timestamp }}" type="video/webm">
-                                    </video>
-                                </a>
-
-                                @php $showDefaultBanner = false; @endphp
-                            @endif
-                        </div>
-                    @endforeach
-                </div>
-
-                <div class="swiper-scrollbar"></div>
-            </div>
-        </div>
-    @endif
-
-    @if ($showDefaultBanner)
-        <div class="swiper" data-interval="3000">
-            <div class="swiper-wrapper bigBannerMenu">
-                <div class="swiper-slide">
-                    <a class="itc-slider-item" style="height: 350px !important;">
-                        <video autoplay muted loop style="object-fit: cover; width: 100%; height: 100%;">
-                            <source src="{{ Storage::url('banners/default/big_banner_menu_default.webm') }}?version={{ config('app.version') }}" type="video/webm">
-                        </video>
-                    </a>
-                </div>
-            </div>
-
-            <div class="swiper-scrollbar"></div>
-        </div>
-    @endif
-
-    @if (false)
-        <div class="slider">
-            <div class="callbacks_container">
-                <ul class="rslides" id="slider">
-                    <div class="slid banner1">
-                        <div class="caption"></div>
-                    </div>
-
-                    <div class="slid banner2">
-                        <div class="caption"></div>
-                    </div>
-
-                    <div class="slid banner3">
-                        <div class="caption"></div>
-                    </div>
-                </ul>
-            </div>
-        </div>
-    @endif
-@endif
+<div class="banner">
+    <div class="bnr2"
+         style="background: url({{ Storage::url('banners/default/bnr3.jpg') }}) no-repeat 0 0; background-size: cover;">
+    </div>
+</div>
 
 <main>
-@if ((isset($inOwnerPanel) || isset($inBigBannerPage)) && Auth::check() && Auth::user()->checkOwnerOrAdmin())
-    <input type="checkbox" id="nav-toggle" hidden>
-    <nav class="nav">
-        <label for="nav-toggle" class="nav-toggle" onclick></label>
-
-        <h2 class="logo">
-            <a>УПРАВЛЕНИЕ</a>
-        </h2>
-        <ul>
-            <li>
-                <a href="{{ route('owner.index', ['hideBroken' => 0, 'source' => 'null']) }}">
-                    Панель управления
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('detail.new.index') }}">
-                    Создать новую игру
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('unpublished.index') }}">
-                    Неопубликованные игры
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('series.list') }}">
-                    Игровые серии
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('expiration.index') }}">
-                    Ожидаемые игры
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('dynamic-menu.index') }}">
-                    Динамическое меню
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('activity.chart.table') }}">
-                    Статистика
-                </a>
-            </li>
-            @if (Auth::user()->checkOwner())
-                <li>
-                    <a href="{{ route('big-banner.index') }}">
-                        Спонсорство
-                    </a>
-                </li>
-            @endif
-            <li>
-                <a href="{{ route('trashed.games') }}">
-                    Корзина
-                </a>
-            </li>
-        </ul>
-    </nav>
-    <div class="mask-content" style="z-index: 10000;"></div>
-@endif
 
 @yield('content')
 
 <a id="back2Top" title="Наверх" href="#">&#10148;</a>
 </main>
 
-@if (!isset($inProfilePage) && !isset($inDetailPage))
-    @php
-        $basementBanner = \App\Http\Helpers\BannerHelper::getBasementBanners($onlyActive = !isset($inBasementBannerPage));
-    @endphp
-
-    @if ($basementBanner->isNotEmpty())
-        @include('template.banner-detail', ['banners' => $basementBanner])
-    @endif
-@endif
-
 <footer style="flex-shrink: 0;">
     <div class="copywrite">
         <div class="basement container">
-{{--            <a class="sitemap" href="{{ asset('public/rss.xml') }}?timestamp={{ time() }}">--}}
-{{--                <p><i class="fas fa-rss"></i> Лента</p>--}}
-{{--            </a>--}}
-{{--            <a class="sitemap" href="{{ asset('public/sitemap.xml') }}?timestamp={{ time() }}">--}}
-{{--                <p><i class="fas fa-sitemap"></i> Карта</p>--}}
-{{--            </a>--}}
-            <a class="telegram" href="https://t.me/greensteam_games_and_softt" target="_blank">
+            <a class="telegram" href="#" target="_blank">
                 <p><i class="fab fa-telegram"></i> Канал</p>
             </a>
-{{--            <a class="feedback-link" href="{{ route('feedback.index') }}">--}}
-{{--                <p><i class="fas fa-envelope"></i> Связь</p>--}}
-{{--            </a>--}}
-{{--            <a class="copyright" href="{{ route('main.index') }}">--}}
-{{--                <p><i class="fas fa-copyright"></i> {{ date('Y') }} {{ config('app.app_name') }}</p>--}}
-{{--            </a>--}}
-            <a class="thanks" href="https://boosty.to/greensteam_games_and_softt/donate" target="_blank">
+            <a class="feedback-link" href="#">
+                <p><i class="fas fa-envelope"></i> Связь</p>
+            </a>
+            <a class="copyright" href="#">
+                <p><i class="fas fa-copyright"></i> {{ date('Y') }} Лаборатория интернет - тест</p>
+            </a>
+            <a class="thanks" href="#" target="_blank">
                 <p><i class="fas fa-heart"></i> Спасибо</p>
             </a>
         </div>

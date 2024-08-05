@@ -4,28 +4,13 @@
     @if ($profile->is_banned)
         <div class="info-block">
             <div class="info_title"><b>Блокировка</b></div>
-            <div class="news_content">Была выдана вам, за неадекватное поведение. Научитесь себя вести.</div>
+            <div class="news_content">Была выдана вам.</div>
         </div>
     @endif
 
     <div class="error">
         <h3></h3>
     </div>
-
-    @if (Auth::check() && Auth::user()->id === $profile->id && !$profile->is_verify && !$profile->is_banned)
-        <form id="verify-email"
-              action="{{ route('profile.send-email-verify', ['name' => $profile->name, 'email' => $profile->email]) }}"
-              method="GET" onsubmit="return false;">
-            <div class="info-block">
-                <div class="info_title" data-name="{{ $profile->name }}">
-                    <b>Спасибо за создание профиля на моем сайте!</b>
-                </div>
-                <div class="news_content" data-email="{{ $profile->email }}">
-                    Мы отправили письмо для верификации вашей электронной почты: {{ $profile->email }}</div>
-                <button type="submit" class="btn btn-orange" style="color: #000">Отправить еще раз</button>
-            </div>
-        </form>
-    @endif
 
     <div class="about">
         <div class="container">
@@ -68,111 +53,6 @@
 
                 </div>
             </div>
-
-            {{--            TODO achivement--}}
-            @if (false)
-                <div class="testimonals">
-                    <h3>Витрина достижений</h3>
-                    <div class="testimonal-grids">
-                        <div class="col-md-4 testimonal-grid">
-                            <div class="testi-info">
-                                <p>""..Mauris congue, dolor at vehicula scelerisque, enim odio vehicula turpis, vitae
-                                    luctus dolor nisi eget est. Aliquam maximus felis eget varius mattis. Quisque
-                                    tristique nibh imperdiet dignissim molestie.""</p>
-                                <h4>Mark Johnson</h4>
-                                <a href="mailto:example@gmail.com">http://www.example.com</a>
-                            </div>
-                        </div>
-                        <div class="col-md-4 testimonal-grid">
-                            <div class="testi-info">
-                                <p>""..Mauris congue, dolor at vehicula scelerisque, enim odio vehicula turpis, vitae
-                                    luctus dolor nisi eget est. Aliquam maximus felis eget varius mattis. Quisque
-                                    tristique nibh imperdiet dignissim molestie.""</p>
-                                <h4>Wiiams Deo</h4>
-                                <a href="mailto:example@gmail.com">http://www.example.com</a>
-                            </div>
-                        </div>
-                        <div class="col-md-4 testimonal-grid">
-                            <div class="testi-info">
-                                <p>""..Mauris congue, dolor at vehicula scelerisque, enim odio vehicula turpis, vitae
-                                    luctus dolor nisi eget est. Aliquam maximus felis eget varius mattis. Quisque
-                                    tristique nibh imperdiet dignissim molestie.""</p>
-                                <h4>Mark Johnson</h4>
-                                <a href="mailto:example@gmail.com">http://www.example.com</a>
-                            </div>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                </div>
-
-                <div class="testimonals">
-                    <h3>Награды профиля</h3>
-                    <div class="testimonal-grids">
-                        <div class="col-md-4 testimonal-grid">
-                            <div class="testi-info">
-                                <p>""..Mauris congue, dolor at vehicula scelerisque, enim odio vehicula turpis, vitae
-                                    luctus dolor nisi eget est. Aliquam maximus felis eget varius mattis. Quisque
-                                    tristique nibh imperdiet dignissim molestie.""</p>
-                                <h4>Mark Johnson</h4>
-                                <a href="mailto:example@gmail.com">http://www.example.com</a>
-                            </div>
-                        </div>
-                        <div class="col-md-4 testimonal-grid">
-                            <div class="testi-info">
-                                <p>""..Mauris congue, dolor at vehicula scelerisque, enim odio vehicula turpis, vitae
-                                    luctus dolor nisi eget est. Aliquam maximus felis eget varius mattis. Quisque
-                                    tristique nibh imperdiet dignissim molestie.""</p>
-                                <h4>Wiiams Deo</h4>
-                                <a href="mailto:example@gmail.com">http://www.example.com</a>
-                            </div>
-                        </div>
-                        <div class="col-md-4 testimonal-grid">
-                            <div class="testi-info">
-                                <p>""..Mauris congue, dolor at vehicula scelerisque, enim odio vehicula turpis, vitae
-                                    luctus dolor nisi eget est. Aliquam maximus felis eget varius mattis. Quisque
-                                    tristique nibh imperdiet dignissim molestie.""</p>
-                                <h4>Mark Johnson</h4>
-                                <a href="mailto:example@gmail.com">http://www.example.com</a>
-                            </div>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                </div>
-
-                <div class="testimonals">
-                    <h3>Знаки отличия</h3>
-                    <div class="testimonal-grids">
-                        <div class="col-md-4 testimonal-grid">
-                            <div class="testi-info">
-                                <p>""..Mauris congue, dolor at vehicula scelerisque, enim odio vehicula turpis, vitae
-                                    luctus dolor nisi eget est. Aliquam maximus felis eget varius mattis. Quisque
-                                    tristique nibh imperdiet dignissim molestie.""</p>
-                                <h4>Mark Johnson</h4>
-                                <a href="mailto:example@gmail.com">http://www.example.com</a>
-                            </div>
-                        </div>
-                        <div class="col-md-4 testimonal-grid">
-                            <div class="testi-info">
-                                <p>""..Mauris congue, dolor at vehicula scelerisque, enim odio vehicula turpis, vitae
-                                    luctus dolor nisi eget est. Aliquam maximus felis eget varius mattis. Quisque
-                                    tristique nibh imperdiet dignissim molestie.""</p>
-                                <h4>Wiiams Deo</h4>
-                                <a href="mailto:example@gmail.com">http://www.example.com</a>
-                            </div>
-                        </div>
-                        <div class="col-md-4 testimonal-grid">
-                            <div class="testi-info">
-                                <p>""..Mauris congue, dolor at vehicula scelerisque, enim odio vehicula turpis, vitae
-                                    luctus dolor nisi eget est. Aliquam maximus felis eget varius mattis. Quisque
-                                    tristique nibh imperdiet dignissim molestie.""</p>
-                                <h4>Mark Johnson</h4>
-                                <a href="mailto:example@gmail.com">http://www.example.com</a>
-                            </div>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                </div>
-            @endif
         </div>
     </div>
 

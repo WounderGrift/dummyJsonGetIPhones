@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b5d9e65e7dd7a6052f54b54826d85b36",
+    "content-hash": "8f52acf325c7671b4d6a0108beb618d5",
     "packages": [
         {
             "name": "brick/math",
@@ -129,6 +129,56 @@
                 }
             ],
             "time": "2023-12-11T17:09:12+00:00"
+        },
+        {
+            "name": "christeredvartsen/php-bittorrent",
+            "version": "v2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/christeredvartsen/php-bittorrent.git",
+                "reference": "1e4f17ef840cd56b10e9c507df0064048fc91778"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/christeredvartsen/php-bittorrent/zipball/1e4f17ef840cd56b10e9c507df0064048fc91778",
+                "reference": "1e4f17ef840cd56b10e9c507df0064048fc91778",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "phploc/phploc": "^5.0",
+                "phpstan/phpstan": "^0.12",
+                "phpunit/phpunit": "^8.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "BitTorrent\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Christer Edvartsen",
+                    "email": "cogo@starzinger.net"
+                }
+            ],
+            "description": "A set of components that can be used to interact with torrent files (read+write) and classes that can encode/decode to/from the BitTorrent format.",
+            "homepage": "https://github.com/christeredvartsen/php-bittorrent",
+            "keywords": [
+                "bittorrent",
+                "torrent"
+            ],
+            "support": {
+                "issues": "https://github.com/christeredvartsen/php-bittorrent/issues",
+                "source": "https://github.com/christeredvartsen/php-bittorrent"
+            },
+            "time": "2020-01-21T19:12:01+00:00"
         },
         {
             "name": "dflydev/dot-access-data",
@@ -8374,6 +8424,8 @@
         "ext-curl": "*",
         "ext-simplexml": "*"
     },
-    "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "platform-dev": {
+        "ext-exif": "*"
+    },
+    "plugin-api-version": "2.6.0"
 }

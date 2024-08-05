@@ -72,13 +72,6 @@
                                placeholder="Пароль">
                         </div>
 
-                        <label class="checkbox-container" for="mailing">
-                            Хочу получать письма о новинках
-                            <input type="checkbox" id="mailing" name="get_letter_release" value="1"
-                                {{$profile->get_letter_release ? 'checked' : ''}}>
-                            <span class="checkmark"></span>
-                        </label>
-
                         @if ($profile->id != Auth::user()->id && Auth::user()->checkOwnerOrAdmin())
                             <div>
                                 @foreach($profile->getRoleOption() as $key => $role)
@@ -208,5 +201,5 @@
         </div>
     </div>
 
-    <script type="module" src="{{asset('modules/profilepage/resources/assets/js/edit.js')}}?version={{config('app.version')}}"></script>
+    <script type="module" src="{{ asset('modules/profilepage/resources/assets/js/edit.js') }}?version={{ config('app.version') }}"></script>
 @endsection

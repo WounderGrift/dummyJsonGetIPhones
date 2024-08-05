@@ -1,4 +1,7 @@
 {
     "MainPage": true,
-    "ProfilePage": true
+    "ProfilePage": true,
+    "RecommendedPage": true,
+    "FeedbackPage": true,
+    "DetailPage": true
 }

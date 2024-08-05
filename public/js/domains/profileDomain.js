@@ -13,7 +13,6 @@ export class ProfileDomain {
         this.status   = null;
         this.about_me = null;
 
-        this.get_letter_release = null;
         this.remember = false;
         this.timezone = null;
 

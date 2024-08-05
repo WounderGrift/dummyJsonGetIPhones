@@ -7,11 +7,9 @@ class FileHelper
     const ACCESS_IMAGE_MIME_TYPE = ['image/png', 'image/jpg', 'image/jpeg', 'image/tiff',
         'image/webp', 'image/svg', 'image/bmp'];
 
-    const ACCESS_FILE_MIME_TYPE = ['application/x-rar', 'application/x-bittorrent', 'application/x-torrent'];
+    const ACCESS_FILE_MIME_TYPE = ['application/x-rar'];
 
     const CONVERT_FILE_MIME_TYPE = [
-        'application/x-bittorrent' => '.torrent',
-        'application/x-torrent' => '.torrent',
         'application/x-rar' => '.rar',
     ];
 

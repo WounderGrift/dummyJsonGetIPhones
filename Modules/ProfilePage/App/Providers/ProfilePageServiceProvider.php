@@ -81,7 +81,7 @@ class ProfilePageServiceProvider extends ServiceProvider
      */
     public function registerViews(): void
     {
-        $this->loadViewsFrom(base_path('Modules/'.$this->moduleName.'/resources/views'), 'profilepage');
+        $this->loadViewsFrom(base_path('Modules/'.$this->moduleName.'/resources/views'), 'profilePage');
         $this->loadViewsFrom(resource_path('views'), 'main');
         $this->loadViewsFrom(resource_path('mail/verify'), 'mail');
     }
