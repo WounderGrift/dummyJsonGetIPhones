@@ -477,6 +477,19 @@ let BannerJumpQuery = Backbone.View.extend({
     }
 });
 
+let SkeletonLoader = Backbone.View.extend({
+    el: window,
+
+    initialize: function() {
+        $(window).on('load', this.onLoad, () => this.onLoad());
+    },
+
+    onLoad: function() {
+        $('.games-skeleton-list').hide();
+        $('.games-list').show();
+    }
+});
+
 let enterButtonView     = new EnterButtonView();
 let loginPopupLinksView = new LoginPopupLinksView();
 let registrationQuery   = new RegistrationQuery();
@@ -489,4 +502,5 @@ let back2Top          = new Back2Top();
 let mobileMenu        = new MobileMenu();
 let maskContent       = new MaskContent();
 
-let wishlistActionView = new WishlistActionView();
+let wishlistActionView   = new WishlistActionView();
+let skeletonLoaderBanner = new SkeletonLoader();

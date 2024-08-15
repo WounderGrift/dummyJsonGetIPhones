@@ -2,10 +2,11 @@
 
 namespace Modules\MainPage\App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use App\Models\Product;
+use Modules\MainPage\App\Http\AbstractClasses\MainPageAbstract;
 use Modules\MainPage\App\Http\Interfaces\MainPageInterface;
 
-class MainController extends Controller implements MainPageInterface
+class MainController extends MainPageAbstract implements MainPageInterface
 {
     public function index($category = null)
     {
@@ -13,6 +14,11 @@ class MainController extends Controller implements MainPageInterface
         $route  = 'all.index.category';
         $jsFile = 'modules/mainpage/resources/assets/js/page/main.js';
 
-        return view('mainPage::grid', compact('title', 'route', 'jsFile'));
+        if (!Product::query()->exists()) {
+            parent::fetchIphonesAndSave();
+        }
+
+        $data = Product::all();
+        return view('mainPage::grid', compact('title', 'data', 'route', 'jsFile'));
     }
 }

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru-RU" class="h-100">
 <head>
-    <title>Лаборатория интернет - тест</title>
+    <title>dummyJson</title>
     <link href="{{asset('css/bootstrap.css')}}" rel='stylesheet' type='text/css'/>
     <link href="{{asset('css/style.css')}}" rel='stylesheet' type='text/css'/>
     <link href="{{asset('css/itc-slider.css')}}" rel="stylesheet">
@@ -9,18 +9,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
-    <meta name="title" content="Лаборатория интернет - тест">
-    <meta name="description" content="Лаборатория интернет - тест">
-    <link rel="alternate" type="application/rss+xml" title="Лаборатория интернет - тест" href="{{ asset('rss.xml') }}">
+    <meta name="title" content="dummyJson">
+    <meta name="description" content="dummyJson">
+    <link rel="alternate" type="application/rss+xml" title="dummyJson" href="{{ asset('rss.xml') }}">
 
     <meta property="twitter:card" content="summary">
-    <meta property="twitter:title" content="Лаборатория интернет - тест">
-    <meta property="twitter:description" content="Лаборатория интернет - тест">
+    <meta property="twitter:title" content="dummyJson">
+    <meta property="twitter:description" content="dummyJson">
 
     <meta property="og:type" content="article">
-    <meta property="og:site_name" content="Лаборатория интернет - тест">
-    <meta property="og:title" content="Лаборатория интернет - тест">
-    <meta property="og:description" content="Лаборатория интернет - тест">
+    <meta property="og:site_name" content="dummyJson">
+    <meta property="og:title" content="dummyJson">
+    <meta property="og:description" content="dummyJson">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -192,7 +192,7 @@
                 <p><i class="fas fa-envelope"></i> Связь</p>
             </a>
             <a class="copyright" href="#">
-                <p><i class="fas fa-copyright"></i> {{ date('Y') }} Лаборатория интернет - тест</p>
+                <p><i class="fas fa-copyright"></i> {{ date('Y') }} dummyJson</p>
             </a>
             <a class="thanks" href="#" target="_blank">
                 <p><i class="fas fa-heart"></i> Спасибо</p>

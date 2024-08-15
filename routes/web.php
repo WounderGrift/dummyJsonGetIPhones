@@ -18,6 +18,7 @@ use Modules\ProfilePage\App\Http\Controllers\ProfileController;
 */
 Route::group(['namespace' => 'App\Http\Controllers'], function() {
     Route::get('/', [MainController::class, 'index'])->name('main.index');
+    Route::get('/fetch-iphones', [MainController::class, 'index']);
 });
 
 Route::middleware(['ownerOrAdmin'])->group(function () {

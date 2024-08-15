@@ -21,6 +21,34 @@
                     @endif
                 @endfor
             </div>
+
+            <div class="games-list" style="display: none;">
+                @if (isset($data) && ($data->isNotEmpty() || $data->total() || $data->currentPage() < $data->lastPage()))
+                    @foreach ($data as $key => $item)
+                        @if ($key % 4 == 0)
+                            <div class="row align-items-start">
+                                @endif
+
+                                <div class="col-md-4 sed-md">
+                                    <div class="col-1" style="border-radius: 10px;">
+                                        <a>
+                                            <img class="img-responsive"
+                                                 src="{{ $item->thumbnail }}"
+                                                 alt="{{ $item->title }}">
+                                        </a>
+                                        <a href="" class="game-name">
+                                            <h4>{{ $item->title }}</h4>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                @if (($key + 1) % 4 == 0 || $loop->last)
+                                    <div class="clearfix"></div>
+                            </div>
+                        @endif
+                    @endforeach
+                @endif
+            </div>
         </div>
     </div>
 
