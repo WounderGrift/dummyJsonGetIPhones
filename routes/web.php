@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\StringToNumberController;
 use Illuminate\Support\Facades\Route;
 use Modules\MainPage\App\Http\Controllers\MainController;
 use Modules\ProfilePage\App\Http\Controllers\ChartsController;
@@ -19,6 +20,7 @@ use Modules\ProfilePage\App\Http\Controllers\ProfileController;
 Route::group(['namespace' => 'App\Http\Controllers'], function() {
     Route::get('/', [MainController::class, 'index'])->name('main.index');
     Route::get('/fetch-iphones', [MainController::class, 'index']);
+    Route::get('/convert-string-to-number', [StringToNumberController::class, 'convert']);
 });
 
 Route::middleware(['ownerOrAdmin'])->group(function () {
